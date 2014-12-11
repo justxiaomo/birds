@@ -3,6 +3,8 @@
    <resources>
        <img id="bg_birds" href="resources/bg_birds.png"/>
        <img id="answer_birds" href="resources/thumbnail.jpg"/>
+       <img id="img_answer" href="resources/pic/ans.png" />
+       <img id="img_stop" href="resources/pic/stop.png" />
        
        <img id="img_birds_01" href="resources/pic/birds_03.png"/>
        <img id="img_birds_02" href="resources/pic/birds_04.png"/>
@@ -15,13 +17,52 @@
        <img id="img_birds_09" href="resources/pic/birds_12.png"/>
        
        
+       <path id="aud_background_music" href="resources/music/bg_music.mp3" />
+       <path id="aud_selected" href="resources/music/sfx_card_selected.mp3" />
        
-       
-       
-       <script id="lua_restart" href="script/restart_game.lua"/>
+       <script id="lua_pick"       href="script/pick_bird.lua" />
+	   <script id="lua_drag"       href="script/drag_bird.lua" />
+	   <script id="lua_drop"       href="script/drop_bird.lua" />
+       <script id="lua_restart"    href="script/restart_game.lua"/>
    </resources>
    <triggers>
        <event src="root" message="in_page_begin" dst="init_game"/>
+       
+       <event src="birds_01"   message="down"     dst="pick_01" />
+	   <event src="birds_01"   message="move"     dst="drag_01" />
+	   <event src="birds_01"   message="up"       dst="drop_01" />
+	   
+	   <event src="birds_02"   message="down"     dst="pick_02" />
+	   <event src="birds_02"   message="move"     dst="drag_02" />
+	   <event src="birds_02"   message="up"       dst="drop_02" />
+	   
+	   <event src="birds_03"   message="down"     dst="pick_03" />
+	   <event src="birds_03"   message="move"     dst="drag_03" />
+	   <event src="birds_03"   message="up"       dst="drop_03" />
+	   
+	   <event src="birds_04"   message="down"     dst="pick_04" />
+	   <event src="birds_04"   message="move"     dst="drag_04" />
+	   <event src="birds_04"   message="up"       dst="drop_04" />
+	   
+	   <event src="birds_05"   message="down"     dst="pick_05" />
+	   <event src="birds_05"   message="move"     dst="drag_05" />
+	   <event src="birds_05"   message="up"       dst="drop_05" />
+	   
+	   <event src="birds_06"   message="down"     dst="pick_06" />
+	   <event src="birds_06"   message="move"     dst="drag_06" />
+	   <event src="birds_06"   message="up"       dst="drop_06" />
+	   
+	   <event src="birds_07"   message="down"     dst="pick_07" />
+	   <event src="birds_07"   message="move"     dst="drag_07" />
+	   <event src="birds_07"   message="up"       dst="drop_07" />
+	   
+	   <event src="birds_08"   message="down"     dst="pick_08" />
+	   <event src="birds_08"   message="move"     dst="drag_08" />
+	   <event src="birds_08"   message="up"       dst="drop_08" />
+	   
+	   <event src="birds_09"   message="down"     dst="pick_09" />
+	   <event src="birds_09"   message="move"     dst="drag_09" />
+	   <event src="birds_09"   message="up"       dst="drop_09" />
    </triggers>
    <layer id="root" x="0" y="0" width="1920" height="1080">
       <effect id="init_game" script="lua_restart">
@@ -35,23 +76,66 @@
 				<node name="7"  resId="birds_07" />
 				<node name="8"  resId="birds_08" />
 				<node name="9"  resId="birds_09" />
-			</table>	
+			</table>
+			<node name="bg" resId="bg"/>	
             <node name="answer" resId="answer"/>
+            <node name="ans" resId="ans"/>
+            <node name="stop" resId="stop"/>
+            <path name="background_music" resId="aud_background_music" />
+            <path name="selected_effect" resId="aud_selected" />
        </effect>
-       <node type="image" id="birds_01" resId="img_birds_01" />
-       <node type="image" id="birds_02" resId="img_birds_02" />
-       <node type="image" id="birds_03" resId="img_birds_03" />
-       <node type="image" id="birds_04" resId="img_birds_04" />
-       <node type="image" id="birds_05" resId="img_birds_05" />
-       <node type="image" id="birds_06" resId="img_birds_06" />
-       <node type="image" id="birds_07" resId="img_birds_07" />
-       <node type="image" id="birds_08" resId="img_birds_08" />
-       <node type="image" id="birds_09" resId="img_birds_09" />
+       
+       <node type="image" id="birds_01" resId="img_birds_01" >
+            <effect id="pick_01" script="lua_pick"></effect>
+			<effect id="drag_01" script="lua_drag"></effect>
+			<effect id="drop_01" script="lua_drop"></effect>
+	   </node>>
+       <node type="image" id="birds_02" resId="img_birds_02" >
+            <effect id="pick_02" script="lua_pick"></effect>
+			<effect id="drag_02" script="lua_drag"></effect>
+			<effect id="drop_02" script="lua_drop"></effect>
+	   </node>>
+       <node type="image" id="birds_03" resId="img_birds_03" >
+            <effect id="pick_03" script="lua_pick"></effect>
+			<effect id="drag_03" script="lua_drag"></effect>
+			<effect id="drop_03" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_04" resId="img_birds_04" >
+            <effect id="pick_04" script="lua_pick"></effect>
+			<effect id="drag_04" script="lua_drag"></effect>
+			<effect id="drop_04" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_05" resId="img_birds_05" >
+            <effect id="pick_05" script="lua_pick"></effect>
+			<effect id="drag_05" script="lua_drag"></effect>
+			<effect id="drop_05" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_06" resId="img_birds_06" >
+            <effect id="pick_06" script="lua_pick"></effect>
+			<effect id="drag_06" script="lua_drag"></effect>
+			<effect id="drop_06" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_07" resId="img_birds_07" >
+            <effect id="pick_07" script="lua_pick"></effect>
+			<effect id="drag_07" script="lua_drag"></effect>
+			<effect id="drop_07" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_08" resId="img_birds_08" >
+            <effect id="pick_08" script="lua_pick"></effect>
+			<effect id="drag_08" script="lua_drag"></effect>
+			<effect id="drop_08" script="lua_drop"></effect>
+		</node>
+       <node type="image" id="birds_09" resId="img_birds_09" >
+            <effect id="pick_09" script="lua_pick"></effect>
+			<effect id="drag_09" script="lua_drag"></effect>
+			<effect id="drop_09" script="lua_drop"></effect>
+		</node>
        
        
-       
-       <node type="image" resId="bg_birds" x="0" y="0"/>
-       <node type="image" id="answer" resId="answer_birds" x="0" y="0"/> 
+       <node type="image" id="bg" resId="bg_birds" />
+       <node type="image" id="answer" resId="answer_birds"/> 
+       <node type="image" id="ans" resId="img_answer"/> 
+       <node type="image" id="stop" resId="img_stop"/> 
      
    </layer>
 </content>

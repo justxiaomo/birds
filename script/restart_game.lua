@@ -14,9 +14,7 @@ function fadeInNode(node, position, opacity)
   node:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(0.25), CCCallFunc:create(function()
     node:setVisible(true)
     node:runAction(CCFadeIn:create(0.25))
-    if opacity ~= nil then
-      node:setOpacity(opacity)
-    end
+   
     if position ~= nil then
       node:setPosition(position)
     end
@@ -43,23 +41,48 @@ function restart_game(args)
     end
     _ROOT = args['scope'] 
     _BIRDS = to_numeric_array(args['birds'], true)
-    _answer = args['answer']
+    _BG_IMG = args['bg']
+    _ANSWER = args['answer']
+    _ANS = args['ans']
+    _STOP = args['stop']
+    _BACKGROUND_AUDIO = args['background_music']
+      _SELECTED_AUDIO = args['selected_effect'] 
+      
+    _BG_IMG:setAnchorPoint(ccp(0.5, 0.5))
+     _BG_IMG_POSITION = ccp(960,540)
+    _ANSWER:setAnchorPoint(ccp(0.5, 0.5))
+    _ANSWER_POSITION = ccp(960,540)
+    _ANS:setAnchorPoint(ccp(0.5, 0.5))
+    _ANS_POSITION = ccp(1604,48)
+    _STOP:setAnchorPoint(ccp(0.5, 0.5))
+    _STOP_POSITION = ccp(1629,1038)
+    
+    _BIRD_WIDTH = 425 / 2
+    _BIRD_HEIGHT = 305 / 2
+    
     _BIRDS_POSITIONS = {
       ccp(536, 243),
-      ccp(960, 243),
-      ccp(1348, 243),
+      ccp(961, 243),
+      ccp(1386, 243),
       ccp(536, 548),
-      ccp(960, 548),
-      ccp(1348, 548),
+      ccp(961, 548),
+      ccp(1386, 548),
       ccp(536, 853),
-      ccp(960, 853),
-      ccp(1348, 853)
+      ccp(961, 853),
+      ccp(1386, 853)
     }
-    end
+  end
   for key, node in pairs(_BIRDS) do
        node:setVisible(false)
   end
   
+    _ANSWER:setVisible(false)
+    _BG_IMG:setVisible(false)
+    _ANS:setVisible(false)
+    _STOP:setVisible(false)
+  fadeInNode( _BG_IMG, _BG_IMG_POSITION)
+  fadeInNode( _ANS, _ANS_POSITION)
+  fadeInNode( _STOP,  _STOP_POSITION)
   -- 初始化随机数（设置随机数种子）
   math.randomseed(os.clock())
   
@@ -82,11 +105,11 @@ function restart_game(args)
    
     
     
+    SimpleAudioEngine:sharedEngine():playEffect(_BACKGROUND_AUDIO:getCString(), false)
     
-    
-    
+     fadeInNode(_ANSWER, _ANSWER_POSITION)
    --answer:runAction(CCSequence:createWithTwoActions(delay_action,CCFadeOut:create(1)))
-    _answer:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(1), 
+    _ANSWER:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(1), 
     CCFadeOut:create(1)))
     --answer:setVisible(false)
     --answer:runAction(CCFadeOut:create(0.25))
