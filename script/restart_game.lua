@@ -54,6 +54,7 @@ function restart_game(args)
     _SELECTED_AUDIO = args['selected_effect']
     _COMPLETED_AUDIO = args['completed_effect'] 
     _BIRD_AUDIO = args['bird_effect']
+    _ANSWER_AUDIO = args['answer_effect']
       
     _BG_IMG:setAnchorPoint(ccp(0.5, 0.5))
      _BG_IMG_POSITION = ccp(960,540)

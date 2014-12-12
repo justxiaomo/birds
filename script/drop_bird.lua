@@ -7,7 +7,9 @@ function drop_bird(args)
   local bird = args['scope']
   
   -- 如果移动已经成功则不做任何处理
-
+  if bird:getOpacity() < 255 then
+    return
+  end
 
   -- 取得拖放的目标位置
   local locationX = bird:getPositionX()

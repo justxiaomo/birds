@@ -24,15 +24,19 @@
        <path id="aud_background_music" href="resources/music/bg_music.mp3" />
        <path id="aud_selected" href="resources/music/sfx_card_selected.mp3" />
        <path id="aud_level_completed" href="resources/music/sfx_completed.mp3" />
-        <path id="aud_bird" href="resources/music/sfx_birds.mp3" />
+       <path id="aud_bird" href="resources/music/sfx_birds.mp3" />
+       <path id="aud_answer" href="resources/music/sfx_answer.mp3" />
        
        <script id="lua_pick"       href="script/pick_bird.lua" />
 	   <script id="lua_drag"       href="script/drag_bird.lua" />
 	   <script id="lua_drop"       href="script/drop_bird.lua" />
        <script id="lua_restart"    href="script/restart_game.lua"/>
+       <script id="lua_answer"     href="script/answer_game.lua"/>
    </resources>
    <triggers>
        <event src="root" message="in_page_begin" dst="init_game"/>
+       <event src="agin" message="tap"           dst="restart_game1" />
+       <event src="ans"  message="tap"           dst="ans" />
        
        <event src="birds_01"   message="down"     dst="pick_01" />
 	   <event src="birds_01"   message="move"     dst="drag_01" />
@@ -95,6 +99,7 @@
             <path name="selected_effect" resId="aud_selected" />
             <path name="completed_effect" resId="aud_level_completed" />
             <path name="bird_effect" resId="aud_bird" />
+            <path name="answer_effect" resId="aud_answer" />
        </effect>
        
        <node type="image" id="birds_01" resId="img_birds_01" >
@@ -146,12 +151,17 @@
        
        <node type="image" id="bg" resId="bg_birds" />
        <node type="image" id="answer" resId="answer_birds"/>
+          
        <node type="image" id="bird" resId="img_bird"/> 
-       <node type="image" id="ans" resId="img_answer"/> 
+       <node type="image" id="ans" resId="img_answer">
+           <effect id="ans" script="lua_answer" />
+       </node> 
        <node type="image" id="stop" resId="img_stop"/>
        
        <node type="image" id="mask" resId="img_mask"/>
-       <node type="image" id="agin" resId="img_agin"/>
+       <node type="image" id="agin" resId="img_agin">
+           <effect id="restart_game1" script="lua_restart" />
+       </node>
        <node type="image" id="return" resId="img_return"/>    
      
    </layer>
