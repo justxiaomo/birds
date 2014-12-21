@@ -20,6 +20,9 @@
        <img id="img_birds_08" href="resources/pic/birds_11.png"/>
        <img id="img_birds_09" href="resources/pic/birds_12.png"/>
        
+       <path id="res_bingo"  href="resources/particles/bingo.plist" />
+       <path id="res_bingo1" href="resources/particles/bingo1.plist" />
+       
        
        <path id="aud_background_music" href="resources/music/bg_music.mp3" />
        <path id="aud_selected" href="resources/music/sfx_card_selected.mp3" />
@@ -32,6 +35,7 @@
 	   <script id="lua_drop"       href="script/drop_bird.lua" />
        <script id="lua_restart"    href="script/restart_game.lua"/>
        <script id="lua_answer"     href="script/answer_game.lua"/>
+       <script id="lua_goto"       href="script/gotoPage.lua"/>
    </resources>
    <triggers>
        <event src="root" message="in_page_begin" dst="init_game"/>
@@ -73,6 +77,8 @@
 	   <event src="birds_09"   message="down"     dst="pick_09" />
 	   <event src="birds_09"   message="move"     dst="drag_09" />
 	   <event src="birds_09"   message="up"       dst="drop_09" />
+	   
+	   <event src="i_goto"     message="tap"      dst="goto_C" />
    </triggers>
    <layer id="root" x="0" y="0" width="1920" height="1080">
       <effect id="init_game" script="lua_restart">
@@ -95,64 +101,97 @@
             <node name="mask" resId="mask"/>
             <node name="agin" resId="agin"/>
             <node name="return" resId="return"/>
+            
+           
             <path name="background_music" resId="aud_background_music" />
             <path name="selected_effect" resId="aud_selected" />
             <path name="completed_effect" resId="aud_level_completed" />
             <path name="bird_effect" resId="aud_bird" />
             <path name="answer_effect" resId="aud_answer" />
+           
        </effect>
        
        <node type="image" id="birds_01" resId="img_birds_01" >
             <effect id="pick_01" script="lua_pick"></effect>
 			<effect id="drag_01" script="lua_drag"></effect>
-			<effect id="drop_01" script="lua_drop"></effect>
+			<effect id="drop_01" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
+			 
 	   </node>>
        <node type="image" id="birds_02" resId="img_birds_02" >
             <effect id="pick_02" script="lua_pick"></effect>
 			<effect id="drag_02" script="lua_drag"></effect>
-			<effect id="drop_02" script="lua_drop"></effect>
+			<effect id="drop_02" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 	   </node>>
        <node type="image" id="birds_03" resId="img_birds_03" >
             <effect id="pick_03" script="lua_pick"></effect>
 			<effect id="drag_03" script="lua_drag"></effect>
-			<effect id="drop_03" script="lua_drop"></effect>
+			<effect id="drop_03" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_04" resId="img_birds_04" >
             <effect id="pick_04" script="lua_pick"></effect>
 			<effect id="drag_04" script="lua_drag"></effect>
-			<effect id="drop_04" script="lua_drop"></effect>
+			<effect id="drop_04" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_05" resId="img_birds_05" >
             <effect id="pick_05" script="lua_pick"></effect>
 			<effect id="drag_05" script="lua_drag"></effect>
-			<effect id="drop_05" script="lua_drop"></effect>
+			<effect id="drop_05" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_06" resId="img_birds_06" >
             <effect id="pick_06" script="lua_pick"></effect>
 			<effect id="drag_06" script="lua_drag"></effect>
-			<effect id="drop_06" script="lua_drop"></effect>
+			<effect id="drop_06" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_07" resId="img_birds_07" >
             <effect id="pick_07" script="lua_pick"></effect>
 			<effect id="drag_07" script="lua_drag"></effect>
-			<effect id="drop_07" script="lua_drop"></effect>
+			<effect id="drop_07" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_08" resId="img_birds_08" >
             <effect id="pick_08" script="lua_pick"></effect>
 			<effect id="drag_08" script="lua_drag"></effect>
-			<effect id="drop_08" script="lua_drop"></effect>
+			<effect id="drop_08" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        <node type="image" id="birds_09" resId="img_birds_09" >
             <effect id="pick_09" script="lua_pick"></effect>
 			<effect id="drag_09" script="lua_drag"></effect>
-			<effect id="drop_09" script="lua_drop"></effect>
+			<effect id="drop_09" script="lua_drop">
+			    <path   name="bingo"  resId="res_bingo" />
+			    <path   name="bingo1"  resId="res_bingo1" />
+			</effect>
 		</node>
        
        
        <node type="image" id="bg" resId="bg_birds" />
+            
        <node type="image" id="answer" resId="answer_birds"/>
           
-       <node type="image" id="bird" resId="img_bird"/> 
+       <node type="image" id="bird" resId="img_bird"/>
+                
        <node type="image" id="ans" resId="img_answer">
            <effect id="ans" script="lua_answer" />
        </node> 
@@ -162,7 +201,10 @@
        <node type="image" id="agin" resId="img_agin">
            <effect id="restart_game1" script="lua_restart" />
        </node>
-       <node type="image" id="return" resId="img_return"/>    
-     
+       <node type="image" id="return" resId="img_return"> 
+             <effect id="goto_C" script="lua_goto">
+                   <node name="1" resId="bg"/>
+             </effect>
+       </node>
    </layer>
 </content>

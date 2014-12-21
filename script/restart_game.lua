@@ -50,6 +50,7 @@ function restart_game(args)
     _AGIN = args['agin']
     _RETURN = args['return']
     
+   
     _BACKGROUND_AUDIO = args['background_music']
     _SELECTED_AUDIO = args['selected_effect']
     _COMPLETED_AUDIO = args['completed_effect'] 
@@ -65,9 +66,10 @@ function restart_game(args)
     _STOP:setAnchorPoint(ccp(0.5, 0.5))
     _STOP_POSITION = ccp(1629,1038)
     
-    _BIRD:setScaleX(0.5)
-    _BIRD:setScaleY(0.5)
-    _BIRD_POSITION = ccp(799,0)
+   -- _BIRD:setScaleX(0.5)
+   -- _BIRD:setScaleY(0.5)
+     _BIRD:setAnchorPoint(ccp(0.5, 0.5))
+    _BIRD_POSITION = ccp(960,120)
     
     _MASK:setScaleX(2)
     _MASK:setScaleY(2)
@@ -134,14 +136,15 @@ function restart_game(args)
   -- 隐藏蒙板
   if _INITIALIZED ~= nil then
     fadeOutNode(_MASK)
-    _BIRD:setScaleX(0.5)
-    _BIRD:setScaleY(0.5)
+   -- _BIRD:setScaleX(0.5)
+   -- _BIRD:setScaleY(0.5)
   end
   
   _IS_COMPLETED = false 
     
     
-    SimpleAudioEngine:sharedEngine():playEffect(_BACKGROUND_AUDIO:getCString(), false)
+    --SimpleAudioEngine:sharedEngine():playEffect(_BACKGROUND_AUDIO:getCString(), false)
+    SimpleAudioEngine:sharedEngine():playBackgroundMusic(_BACKGROUND_AUDIO:getCString(), true)
     
      --fadeInNode( _BIRD,  _BIRD_POSITION)
      --fadeInNode( _MASK,  _MASK_POSITION)
