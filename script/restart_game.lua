@@ -56,6 +56,9 @@ function restart_game(args)
     _COMPLETED_AUDIO = args['completed_effect'] 
     _BIRD_AUDIO = args['bird_effect']
     _ANSWER_AUDIO = args['answer_effect']
+    
+    _bingo = args['bingo']:getCString()
+    _bingo1 = args['bingo1']:getCString()
       
     _BG_IMG:setAnchorPoint(ccp(0.5, 0.5))
      _BG_IMG_POSITION = ccp(960,540)
@@ -66,9 +69,9 @@ function restart_game(args)
     _STOP:setAnchorPoint(ccp(0.5, 0.5))
     _STOP_POSITION = ccp(1629,1038)
     
-   -- _BIRD:setScaleX(0.5)
-   -- _BIRD:setScaleY(0.5)
-     _BIRD:setAnchorPoint(ccp(0.5, 0.5))
+    _BIRD:setScaleX(0.5)
+    _BIRD:setScaleY(0.5)
+    _BIRD:setAnchorPoint(ccp(0.5, 0.5))
     _BIRD_POSITION = ccp(960,120)
     
     _MASK:setScaleX(2)
@@ -136,8 +139,8 @@ function restart_game(args)
   -- 隐藏蒙板
   if _INITIALIZED ~= nil then
     fadeOutNode(_MASK)
-   -- _BIRD:setScaleX(0.5)
-   -- _BIRD:setScaleY(0.5)
+    _BIRD:setScaleX(0.5)
+    _BIRD:setScaleY(0.5)
   end
   
   _IS_COMPLETED = false 
@@ -153,9 +156,13 @@ function restart_game(args)
      fadeInNode(_ANSWER, _ANSWER_POSITION, 0.25)
      
    --answer:runAction(CCSequence:createWithTwoActions(delay_action,CCFadeOut:create(1)))
-    _ANSWER:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(1), 
-    CCFadeOut:create(1)))
+    --_ANSWER:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(1), 
+   -- CCFadeOut:create(1)))
     --answer:setVisible(false)
     --answer:runAction(CCFadeOut:create(0.25))
+    
+    local delay_action = CCDelayTime:create(2)
+    local pauseall= CCCallFunc:create(function() _ANSWER:setVisible(false) end)
+    _ROOT:runAction(CCSequence:createWithTwoActions(delay_action , pauseall ))
     _INITIALIZED = true
 end

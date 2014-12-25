@@ -1,21 +1,15 @@
 --[[
   放下纽扣时的处理。
 --]]
-local backf=function(_BIRD)
-  _BIRD:setVisible(true)
-end
+
 function drop_bird(args)
 
   -- 取得纽扣节点
   local bird = args['scope']
-  local bingo = args['bingo']:getCString()
-  local bingo1 = args['bingo1']:getCString()
-  
+ 
   
   -- 如果移动已经成功则不做任何处理
-  if bird:getOpacity() < 255 then
-    return
-  end
+
 
   -- 取得拖放的目标位置
   local locationX = bird:getPositionX()
@@ -57,23 +51,26 @@ function drop_bird(args)
     SimpleAudioEngine:sharedEngine():playEffect(_COMPLETED_AUDIO:getCString(), false)
     fadeInNode(_BIRD, _BIRD_POSITION, 0)
    
-    --_BIRD:runAction(CCScaleTo:create(1, 1, 1))
-    SimpleAudioEngine:sharedEngine():playEffect(_BIRD_AUDIO:getCString(), false)
-      -- 在这里加粒子生成器
-    --
-    local bingoSystem = CCParticleSystemQuad:create(bingo)
-      local batheNode = CCParticleBatchNode:createWithTexture(bingoSystem:getTexture())
-      batheNode:addChild(bingoSystem)  
-       
-       _BIRD:addChild(batheNode)
+     -- 在这里加粒子生成器
+    --闪烁效果
 
-      local bingo1System = CCParticleSystemQuad:create(bingo1)
-      local batheNode1 = CCParticleBatchNode:createWithTexture(bingo1System:getTexture())
-      batheNode1:addChild(bingo1System)  
-       
-      _BIRD:addChild(batheNode1)
-    --
-    --
+    local bingoSystem = CCParticleSystemQuad:create(_bingo)
+    local batheNode = CCParticleBatchNode:createWithTexture(bingoSystem:getTexture())
+    batheNode:addChild(bingoSystem)
+    --batheNode:setPosition(1024,1536)
+    _BIRD:addChild(batheNode)
+    
+    local bingo1System = CCParticleSystemQuad:create(_bingo1)
+    local batheNode1 = CCParticleBatchNode:createWithTexture(bingo1System:getTexture())
+    batheNode1:addChild(bingo1System)
+    --batheNode1:setPosition(1024,1536)
+    _BIRD:addChild(batheNode1)
+    
+    
+    
+    _BIRD:runAction(CCScaleTo:create(1, 1, 1))
+    SimpleAudioEngine:sharedEngine():playEffect(_BIRD_AUDIO:getCString(), false)
+      
     
     fadeInNode( _MASK,  _MASK_POSITION, 4,200)
     fadeInNode( _AGIN,  _AGIN_POSITION, 4)
@@ -81,10 +78,7 @@ function drop_bird(args)
     
     
     
-    for i = 1, #_BIRDS do
-      local node = _BIRDS[i]  
-      node:setOpacity(140)
-    end
+   
    
   end
 
