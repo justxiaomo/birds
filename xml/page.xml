@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<content>
+   <resources>
+       <img id="bg_birds" href="resources/bg_birds.png"/>
+       <img id="answer_birds" href="resources/thumbnail.jpg"/>
+       
+       <script id="lua_restart" href="script/restart_game.lua"/>
+   </resources>
+   <triggers>
+       <event src="root" message="in_page_begin" dst="init_game"/>
+   </triggers>
+   <layer id="root" x="0" y="0" width="960" height="720">
+       <node type="image" resId="bg_birds" x="0" y="0"/>
+           <effect id="init_game" script="lua_restart">
+                <node name="b_answer" resId="answer_birds"/>
+           </effect>
+       <node type="image" resId="answer_birds" x="0" y="0" visible="false"/>
+   </layer>
+</content>
