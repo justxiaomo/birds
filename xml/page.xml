@@ -4,26 +4,54 @@
        <img id="bg_birds" href="resources/bg_birds.png"/>
        <img id="answer_birds" href="resources/thumbnail.jpg"/>
        
+       <img id="img_birds_01" href="resources/pic/birds_03.png"/>
+       <img id="img_birds_02" href="resources/pic/birds_04.png"/>
+       <img id="img_birds_03" href="resources/pic/birds_05.png"/>
+       <img id="img_birds_04" href="resources/pic/birds_07.png"/>
+       <img id="img_birds_05" href="resources/pic/birds_08.png"/>
+       <img id="img_birds_06" href="resources/pic/birds_09.png"/>
+       <img id="img_birds_07" href="resources/pic/birds_10.png"/>
+       <img id="img_birds_08" href="resources/pic/birds_11.png"/>
+       <img id="img_birds_09" href="resources/pic/birds_12.png"/>
+       
+       
+       
+       
+       
        <script id="lua_restart" href="script/restart_game.lua"/>
    </resources>
    <triggers>
        <event src="root" message="in_page_begin" dst="init_game"/>
    </triggers>
-   <layer id="root" x="0" y="0" width="960" height="720">
-<<<<<<< HEAD
-      
-      
-          
-       <node type="image" resId="answer_birds" x="0" y="0"/>
-           <effect id="init_game" script="lua_restart"/>
-       <node type="image" resId="bg_birds" x="0" y="0"/>       
-=======
+   <layer id="root" x="0" y="0" width="1920" height="1080">
       <effect id="init_game" script="lua_restart">
-                <node name="answer" resId="answer"/>
+            <table name="birds">
+				<node name="1"  resId="birds_01" />
+				<node name="2"  resId="birds_02" />
+				<node name="3"  resId="birds_03" />
+				<node name="4"  resId="birds_04" />
+				<node name="5"  resId="birds_05" />
+				<node name="6"  resId="birds_06" />
+				<node name="7"  resId="birds_07" />
+				<node name="8"  resId="birds_08" />
+				<node name="9"  resId="birds_09" />
+			</table>	
+            <node name="answer" resId="answer"/>
        </effect>
+       <node type="image" id="birds_01" resId="img_birds_01" />
+       <node type="image" id="birds_02" resId="img_birds_02" />
+       <node type="image" id="birds_03" resId="img_birds_03" />
+       <node type="image" id="birds_04" resId="img_birds_04" />
+       <node type="image" id="birds_05" resId="img_birds_05" />
+       <node type="image" id="birds_06" resId="img_birds_06" />
+       <node type="image" id="birds_07" resId="img_birds_07" />
+       <node type="image" id="birds_08" resId="img_birds_08" />
+       <node type="image" id="birds_09" resId="img_birds_09" />
+       
+       
+       
        <node type="image" resId="bg_birds" x="0" y="0"/>
        <node type="image" id="answer" resId="answer_birds" x="0" y="0"/> 
->>>>>>> origin/master
      
    </layer>
 </content>
