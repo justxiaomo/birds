@@ -10,12 +10,20 @@
        <event src="root" message="in_page_begin" dst="init_game"/>
    </triggers>
    <layer id="root" x="0" y="0" width="960" height="720">
+<<<<<<< HEAD
       
       
           
        <node type="image" resId="answer_birds" x="0" y="0"/>
            <effect id="init_game" script="lua_restart"/>
        <node type="image" resId="bg_birds" x="0" y="0"/>       
+=======
+      <effect id="init_game" script="lua_restart">
+                <node name="answer" resId="answer"/>
+       </effect>
+       <node type="image" resId="bg_birds" x="0" y="0"/>
+       <node type="image" id="answer" resId="answer_birds" x="0" y="0"/> 
+>>>>>>> origin/master
      
    </layer>
 </content>
