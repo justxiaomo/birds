@@ -8,10 +8,10 @@ function fadeOutNode(node)
   end)))
 end
 -- 函数：显示节点
-function fadeInNode(node, position, opacity)
+function fadeInNode(node, position, time, opacity)
   _ROOT:reorderChild(node, _MAX_Z_ORDER)
   _MAX_Z_ORDER = _MAX_Z_ORDER + 1
-  node:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(0.25), CCCallFunc:create(function()
+  node:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(time), CCCallFunc:create(function()
     node:setVisible(true)
     node:runAction(CCFadeIn:create(0.25))
    
@@ -45,8 +45,15 @@ function restart_game(args)
     _ANSWER = args['answer']
     _ANS = args['ans']
     _STOP = args['stop']
+    _BIRD = args['bird']
+    _MASK = args['mask']
+    _AGIN = args['agin']
+    _RETURN = args['return']
+    
     _BACKGROUND_AUDIO = args['background_music']
-      _SELECTED_AUDIO = args['selected_effect'] 
+    _SELECTED_AUDIO = args['selected_effect']
+    _COMPLETED_AUDIO = args['completed_effect'] 
+    _BIRD_AUDIO = args['bird_effect']
       
     _BG_IMG:setAnchorPoint(ccp(0.5, 0.5))
      _BG_IMG_POSITION = ccp(960,540)
@@ -57,19 +64,35 @@ function restart_game(args)
     _STOP:setAnchorPoint(ccp(0.5, 0.5))
     _STOP_POSITION = ccp(1629,1038)
     
+    _BIRD:setScaleX(0.5)
+    _BIRD:setScaleY(0.5)
+    _BIRD_POSITION = ccp(799,0)
+    
+    _MASK:setScaleX(2)
+    _MASK:setScaleY(2)
+    _MASK:setAnchorPoint(ccp(0.5, 0.5))
+    _MASK_POSITION = ccp(960,540)
+    
+    
+    _AGIN:setAnchorPoint(ccp(0.5, 0.5))
+    _AGIN_POSITION = ccp(960,540)
+    
+    _RETURN:setAnchorPoint(ccp(0.5, 0.5))
+    _RETURN_POSITION = ccp(960,420)
+    
     _BIRD_WIDTH = 425 / 2
     _BIRD_HEIGHT = 305 / 2
     
     _BIRDS_POSITIONS = {
-      ccp(536, 243),
-      ccp(961, 243),
-      ccp(1386, 243),
+      ccp(536, 853),
+      ccp(961, 853),
+      ccp(1386, 853),
       ccp(536, 548),
       ccp(961, 548),
       ccp(1386, 548),
-      ccp(536, 853),
-      ccp(961, 853),
-      ccp(1386, 853)
+      ccp(536, 243),
+      ccp(961, 243),
+      ccp(1386, 243)
     }
   end
   for key, node in pairs(_BIRDS) do
@@ -80,9 +103,14 @@ function restart_game(args)
     _BG_IMG:setVisible(false)
     _ANS:setVisible(false)
     _STOP:setVisible(false)
-  fadeInNode( _BG_IMG, _BG_IMG_POSITION)
-  fadeInNode( _ANS, _ANS_POSITION)
-  fadeInNode( _STOP,  _STOP_POSITION)
+    _BIRD:setVisible(false)
+    _MASK:setVisible(false)
+    _AGIN:setVisible(false)
+    _RETURN:setVisible(false)
+  fadeInNode( _BG_IMG, _BG_IMG_POSITION, 0.25)
+  fadeInNode( _ANS, _ANS_POSITION, 0.25)
+  fadeInNode( _STOP,  _STOP_POSITION, 0.25)
+  
   -- 初始化随机数（设置随机数种子）
   math.randomseed(os.clock())
   
@@ -97,17 +125,29 @@ function restart_game(args)
     local index = math.random(#all_indexes)
     local selected_number_index = all_indexes[index]
     local node = _BIRDS[selected_number_index]  
-    fadeInNode(node, _BIRDS_POSITIONS[i])
+    fadeInNode(node, _BIRDS_POSITIONS[i], 0.25)
     table.insert(_SELECTED_INDEXES, selected_number_index)
     table.remove(all_indexes, index)
   end
-    
-   
+  
+  -- 隐藏蒙板
+  if _INITIALIZED ~= nil then
+    fadeOutNode(_MASK)
+    _BIRD:setScaleX(0.5)
+    _BIRD:setScaleY(0.5)
+  end
+  
+  _IS_COMPLETED = false 
     
     
     SimpleAudioEngine:sharedEngine():playEffect(_BACKGROUND_AUDIO:getCString(), false)
     
-     fadeInNode(_ANSWER, _ANSWER_POSITION)
+     --fadeInNode( _BIRD,  _BIRD_POSITION)
+     --fadeInNode( _MASK,  _MASK_POSITION)
+     --fadeInNode( _AGIN,  _AGIN_POSITION)
+     --fadeInNode( _RETURN,  _RETURN_POSITION)
+     fadeInNode(_ANSWER, _ANSWER_POSITION, 0.25)
+     
    --answer:runAction(CCSequence:createWithTwoActions(delay_action,CCFadeOut:create(1)))
     _ANSWER:runAction(CCSequence:createWithTwoActions(CCDelayTime:create(1), 
     CCFadeOut:create(1)))

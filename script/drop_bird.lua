@@ -33,9 +33,33 @@ function drop_bird(args)
     _SELECTED_INDEXES[_SELECTED_POSITION] = tmp
   
   
-  
+  for i = 1, #_BIRDS_POSITIONS do
+       if _SELECTED_INDEXES[i] ~= i then
+           _IS_COMPLETED = false
+           break
+        else
+         _IS_COMPLETED = true
+    end
+  end
  --SimpleAudioEngine:sharedEngine():playEffect(_DROP_AUDIO:getCString(), false)
   
-  
+  if _IS_COMPLETED == true then
+    -- 停止播放背景音
+    SimpleAudioEngine:sharedEngine():stopBackgroundMusic()
+    SimpleAudioEngine:sharedEngine():playEffect(_COMPLETED_AUDIO:getCString(), false)
+    fadeInNode( _BIRD,  _BIRD_POSITION, 0)
+    _BIRD:runAction(CCScaleTo:create(2, 1, 1))
+    SimpleAudioEngine:sharedEngine():playEffect(_BIRD_AUDIO:getCString(), false)
+    fadeInNode( _MASK,  _MASK_POSITION, 4,200)
+    fadeInNode( _AGIN,  _AGIN_POSITION, 4)
+    fadeInNode( _RETURN,  _RETURN_POSITION, 4)
+    
+    
+    for i = 1, #_BIRDS do
+      local node = _BIRDS[i]  
+      node:setOpacity(140)
+    end
+    _ANSWER:setOpacity(140)
+  end
 
 end

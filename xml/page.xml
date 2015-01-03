@@ -5,6 +5,10 @@
        <img id="answer_birds" href="resources/thumbnail.jpg"/>
        <img id="img_answer" href="resources/pic/ans.png" />
        <img id="img_stop" href="resources/pic/stop.png" />
+       <img id="img_bird" href="resources/pic/birds.png" />
+       <img id="img_mask" href="resources/pic/mask.png" />
+       <img id="img_agin" href="resources/pic/agin.png" />
+       <img id="img_return" href="resources/pic/return.png" />
        
        <img id="img_birds_01" href="resources/pic/birds_03.png"/>
        <img id="img_birds_02" href="resources/pic/birds_04.png"/>
@@ -19,6 +23,8 @@
        
        <path id="aud_background_music" href="resources/music/bg_music.mp3" />
        <path id="aud_selected" href="resources/music/sfx_card_selected.mp3" />
+       <path id="aud_level_completed" href="resources/music/sfx_completed.mp3" />
+        <path id="aud_bird" href="resources/music/sfx_birds.mp3" />
        
        <script id="lua_pick"       href="script/pick_bird.lua" />
 	   <script id="lua_drag"       href="script/drag_bird.lua" />
@@ -81,8 +87,14 @@
             <node name="answer" resId="answer"/>
             <node name="ans" resId="ans"/>
             <node name="stop" resId="stop"/>
+            <node name="bird" resId="bird"/>
+            <node name="mask" resId="mask"/>
+            <node name="agin" resId="agin"/>
+            <node name="return" resId="return"/>
             <path name="background_music" resId="aud_background_music" />
             <path name="selected_effect" resId="aud_selected" />
+            <path name="completed_effect" resId="aud_level_completed" />
+            <path name="bird_effect" resId="aud_bird" />
        </effect>
        
        <node type="image" id="birds_01" resId="img_birds_01" >
@@ -133,9 +145,14 @@
        
        
        <node type="image" id="bg" resId="bg_birds" />
-       <node type="image" id="answer" resId="answer_birds"/> 
+       <node type="image" id="answer" resId="answer_birds"/>
+       <node type="image" id="bird" resId="img_bird"/> 
        <node type="image" id="ans" resId="img_answer"/> 
-       <node type="image" id="stop" resId="img_stop"/> 
+       <node type="image" id="stop" resId="img_stop"/>
+       
+       <node type="image" id="mask" resId="img_mask"/>
+       <node type="image" id="agin" resId="img_agin"/>
+       <node type="image" id="return" resId="img_return"/>    
      
    </layer>
 </content>
